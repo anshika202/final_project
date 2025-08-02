@@ -10,14 +10,17 @@ function App() {
   const [searchTerm, setSearchTerm] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL;
+
    useEffect(() => {
-    fetch('http://localhost:8080/api/categories')
+    // fetch('http://localhost:8080/api/categories')
+    fetch(`${API_URL}/api/categories`)
       .then((response) => response.json())
       .then(data => setCategories(data));
   },[]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/products')
+    fetch(`${API_URL}/api/products`)
       .then((response) => response.json())
       .then(data => setProducts(data));
   },[]);
